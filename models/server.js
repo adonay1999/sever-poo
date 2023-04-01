@@ -16,6 +16,8 @@ class Server {
       product: "/api/products",
       find: "/api/find",
       uploads: "/api/uploads",
+      compra:"/api/compra",
+      detallecompra:"/api/detallecompra",
     };
 
     //Connect to Database
@@ -38,6 +40,7 @@ class Server {
       fileUpload({
         useTempFiles: true,
         tempFileDir: "/tmp/",
+        createParentPath: true,
       })
     );
   }
@@ -49,6 +52,9 @@ class Server {
     this.app.use(this.paths.product, require("../routes/product.routes"));
     this.app.use(this.paths.find, require("../routes/find.routes"));
     this.app.use(this.paths.uploads, require("../routes/upload.routes"));
+    this.app.use(this.paths.compra, require("../routes/compra.routes"));
+    this.app.use(this.paths.detallecompra, require("../routes/detallecompra.routes"));
+    
   }
 
   listen() {
